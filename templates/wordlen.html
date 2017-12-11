@@ -1,0 +1,12 @@
+﻿{% extends "index.html" %}
+{% block wordlen %}
+
+{% if task=="wordlen": %}
+<h3>Results:</h3>
+    {% for element in result:%}
+        <p><strong>{{element}}</strong></p>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}
+

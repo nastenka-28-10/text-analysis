@@ -1,0 +1,46 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1>Text analysis</h1>
+    <p class="lead">
+        Our Text analisys application will help you to analyze your texts. We can calculate how many times each word is found in the text or output all words of a certain length.
+        Upload your file for analisys and select the desired function.
+        Note that if you need both functions for analysis, you must upload a file for each function separately!
+        Good luck!
+    </p>
+</div>
+
+<div class="row">
+
+    <div class="col-md-12">
+            
+            <form id="upload-form" action="{{ url_for('uploader') }}" enctype="multipart/form-data" method="post">
+                <div class="col-md-4">
+                    <h3>Upload your file with text for analisys</h3> 
+                    <p>Attention! You can upload only <strong>.txt</strong> files</p>  
+                    <p><input type="file" name="file" accept="text/plain"></p>
+                </div>
+                <div class="col-md-4">
+                    <h3>See the statistic of words</h3>
+                    <p><input type="submit" class="btn btn-default" name="statistic" value="View statistics" /></p>
+                    <div id="result-statistic" class="col-md-12">
+                        {% block statistic %}{% endblock %}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h3>To see what words of a certain length are used in the text (without repetitions)</h3>
+                    <p>Set the required word length from <strong>3</strong> to <strong>17</strong> in the field for entering numbers. If you want to change the length, download the file again for the results.</p>
+                    <p>
+                        <input type="number" size="3" name="num" min="3" max="17" />
+                        <input type="submit" class="btn btn-default" name="wordlen" value="View words" />
+                    </p>
+                    <div id="result-wordlen" class="col-md-12">
+                        {% block wordlen %}{% endblock %}
+                    </div>
+                </div>
+            </form>
+    </div>
+
+</div>
+{% endblock %}

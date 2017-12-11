@@ -1,0 +1,11 @@
+﻿{% extends "index.html" %}
+{% block statistic %}
+
+{% if task=="statistic":  %}
+<h3>Results:</h3>
+    {% for element in result:%}
+        <p><strong>{{element[0]}}:{{element[1]}}</strong></p>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}
