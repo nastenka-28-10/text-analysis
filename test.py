@@ -3,6 +3,7 @@ import unittest
 from datetime import datetime
 
 from main import app
+from io import BytesIO
 
 class FlaskTest(unittest.TestCase):
 
@@ -26,6 +27,14 @@ class FlaskTest(unittest.TestCase):
     def test_about_status_code(self):
         result = self.app.get('/about')
         self.assertEqual(result.status_code, 200)
+
+    def test_post_upload_request(self):
+        """Assert that user is redirected with status 302 after creating a todo item"""
+        data = dict(
+            file=(BytesIO(b'uploading .txt file'), "file.txt")
+        )
+        response = self.app.post('/uploader', content_type='multipart/form-data',data=data)
+        self.assertEqual(response.status_code, 200)
 
 
 if __name__ == '__main__':
