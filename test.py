@@ -19,6 +19,13 @@ class FlaskTest(unittest.TestCase):
         result = self.app.get('/home')
         self.assertEqual(result.status_code, 200)
 
+    def test_contact_status_code(self):
+        result = self.app.get('/contact')
+        self.assertEqual(result.status_code, 200)
+
+    def test_about_status_code(self):
+        result = self.app.get('/about')
+        self.assertEqual(result.status_code, 200)
 
 
 if __name__ == '__main__':
